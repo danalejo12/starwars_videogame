@@ -1,0 +1,72 @@
+DUELO ESTELAR PC — v0.7 — DUELO CINEMATICO
+
+1. Abre Godot 4.7 e importa project.godot de esta carpeta.
+2. Ejecuta con F5.
+
+NOVEDADES v0.7 (la v0.6.1 original queda intacta en su propia carpeta):
+- Anakin y Obi-Wan son ahora personajes procedimentales detallados
+  (scripts/jedi_rig.gd): tunicas, mangas anchas, botas, cabello, barba de
+  Obi-Wan y guante negro de Anakin. El menu elige de verdad al heroe y el
+  rival del duelo es siempre el otro.
+- El sable se agarra con las dos manos mediante cinematica inversa (IK) y
+  sigue poses clave: anticipacion, golpe y seguimiento. Cinco ataques
+  direccionales (derecha, reves, vertical, estocada y ascendente).
+- Bloqueo direccional: al bloquear, el sable se coloca en la trayectoria
+  del golpe entrante (alto, izquierda, derecha, medio o bajo) y las hojas se
+  tocan en el punto de contacto real.
+- Chispas en el punto exacto del choque, destello de luz, estela del sable,
+  pausa de impacto, y camara lenta en la parada perfecta y en la derrota.
+- El dano se calcula con la hoja visible del nuevo sable.
+- Los droides B1/B2 (GLB) se escalan a su altura y ya no se hunden en el suelo.
+- El duelo usa tambien el hangar, con una camara 3/4 que sigue a ambos
+  luchadores sin atravesar muros.
+
+ESCENARIO MUSTAFAR (boton "DUELO EN MUSTAFAR - ANAKIN VS OBI-WAN"):
+- scripts/mustafar.gd: plataforma del complejo minero con barandillas,
+  sello central incandescente, consolas, torres con balizas y pilares que
+  se hunden en un mar de lava animada (shader).
+- Cascadas de lava, acantilados, agujas de roca, torres colectoras con
+  brazos, centro de control con ventanales y volcan lejano.
+- Cielo con humo volcanico (shader de cielo), niebla rojiza, luz solar
+  velada y rebote anaranjado de la lava desde abajo.
+- Brasas que suben, ceniza que cae y erupciones aleatorias en la lava.
+- La zona jugable y las colisiones son las mismas que en el hangar.
+- La historia sigue en el hangar; "DUELO EN EL HANGAR" mantiene el duelo clasico.
+
+10 PERSONAJES (scripts/characters.gd):
+  Anakin, Obi-Wan, Luke, Darth Vader, Darth Maul (doble hoja), Yoda,
+  Mace Windu (sable morado), Conde Dooku (empunadura curva y capa),
+  Kylo Ren (gavilanes, hoja inestable) y Rey (sable amarillo).
+  Cada uno tiene aspecto, guardia, velocidad, dano, defensa y alcance propios.
+
+PANTALLA DE SELECCION: al abrir el juego hay dos rejillas de 10 botones
+  (JUGADOR 1 arriba, RIVAL / JUGADOR 2 abajo). A los lados se ven los dos
+  personajes elegidos en 3D sobre el escenario elegido.
+
+COMBATE MAS NATURAL Y SONIDO (scripts/sfx.gd, sintetizado sin archivos):
+  pasos de pies en cada ataque (avanza al golpear, retrocede al recibir),
+  peso del cuerpo, pausa de impacto mas suave, zumbido del sable que cambia
+  con la velocidad, silbido de los tajos, choques, quemaduras, encendido,
+  empuje de la Fuerza y disparos de blaster.
+
+VERSUS 2 JUGADORES (mejor de 3 rondas) — boton "VERSUS - 2 JUGADORES":
+  Jugador 1: WASD, J atacar, K bloquear, E esquivar, Q empuje (o mando 1).
+  Jugador 2: flechas, M o Num1 atacar, coma o Num2 bloquear, punto o Num3
+             esquivar, N o Num0 empuje (o mando 2).
+  El menu elige personaje para cada lado y el escenario (Mustafar u Hangar).
+
+AIMBOT (APUNTADO AUTOMATICO):
+- T (PS4: Share) lo activa o desactiva; TAB (PS4: cruceta abajo) cambia de objetivo.
+- Fija al mejor objetivo (cercano y delante), lo marca con un anillo rojo y
+  mantiene al heroe de frente a el mientras se mueve en circulo.
+- Al atacar gira hacia el objetivo y avanza hasta la distancia ideal de golpe;
+  el tajo sigue al objetivo hasta el impacto. El empuje de Fuerza tambien apunta.
+- Si alguien ataca, el heroe se encara primero a esa amenaza.
+- La IA tambien apunta, con una punteria segun la dificultad (30% en Facil,
+  100% en Leyenda): gira mas rapido y los droides fallan menos disparos.
+
+Los modelos GLB de Anakin y Obi-Wan siguen en assets/characters, pero ya no
+se usan para los Jedi (eran figuras de ~20 cajas con la misma geometria).
+
+Prueba automatica (opcional, para desarrollo):
+  Godot --path . -- --autotest <carpeta_capturas> [--historia]

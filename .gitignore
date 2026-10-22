@@ -1,0 +1,6 @@
+# Cache de importacion de Godot 4 (se regenera al abrir el proyecto)
+.godot/
+# Exportaciones y archivos temporales
+*.tmp
+export/
+build/
